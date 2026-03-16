@@ -5,8 +5,11 @@ Pre Requisite:
 2. Must have valid API permission (Windows.Defender.ATP > File.Read.All, Ti.ReadWrite.All) (reference https://techcommunity.microsoft.com/discussions/microsoftdefenderatp/microsoft-defender-atp-and-malware-information-sharing-platform-integration/576648#M100)
 
 git clone https://github.com/JlovesNoodles/Windows-Threat-Intel-Hash-Checker.git
+
 cd Windows-Threat-Intel-Hash-Checker/
+
 chmod +x hashchecker.sh
+
 ./hashchecker.sh hashes.txt
 
 Sample Result:
