@@ -10,6 +10,7 @@ INPUT_FILE="$1"
 
 # Check if input file was provided
 
+
 if [ -z "$INPUT_FILE" ]; then
     echo "Usage: $0 <input_file>"
     echo "Example: $0 hashes.txt"
@@ -71,10 +72,17 @@ while IFS= read -r hash || [ -n "$hash" ]; do
     echo "Checking hash: $hash"
 
     # Using your original URL
+    # Using your original URL
+    # Using your original URL
+    
     status=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $token" "https://api.securitycenter.microsoft.com/api/files/$hash")  #kindly change if your URL is not the same as mine 
      
     if [ "$status" = "200" ]; then
         response=$(curl -s -H "Authorization: Bearer $token" "https://api.securitycenter.microsoft.com/api/files/$hash")  #kindly change if your URL is not the same as mine 
+        # Using your original URL
+        # Using your original URL
+        # Using your original URL
+        
         determination=$(echo "$response" | grep -o '"determination":"[^"]*' | sed 's/"determination":"//')
         
         if [ -z "$determination" ]; then
@@ -84,7 +92,7 @@ while IFS= read -r hash || [ -n "$hash" ]; do
         echo "STATUS: 200 FOUND"
         echo "DETERMINATION: $determination"
    
-        if [[ "$determination" == *"Malware"* ]] || [[ "$determination" == *"Malicious"* ]] || [[ "$determination" == *"Clean"* ]]; then
+        if [[ "$determination" == *"Malware"* ]] || [[ "$determination" == *"Malicious"* ]] || [[ "$determination" == *"Clean"* ]] || [[ "$determination" == *"Pua"* ]] || [[ "$determination" == *"Unwanted"* ]]; then
             echo "ACTION: DELETE"
             delete_count=$((delete_count + 1))
         else
